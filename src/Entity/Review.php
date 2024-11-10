@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Trait\TimestampsTrait;
 use App\Repository\ReviewRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -9,6 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: ReviewRepository::class)]
 class Review
 {
+    use TimestampsTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
