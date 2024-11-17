@@ -20,4 +20,17 @@ trait TimestampsTrait
     {
         return $this->modifiedAt;
     }
+
+    #[ORM\PrePersist]
+    public function beforeCreate(): void
+    {
+        $datetime = new \DateTimeImmutable();
+        list($this->createdAt, $this->modifiedAt) = [$datetime, $datetime];
+    }
+
+    #[ORM\PreUpdate]
+    public function beforeUpdate(): void
+    {
+        $this->modifiedAt = new \DateTimeImmutable();
+    }
 }
